@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import { useState } from 'react';
 import {
   Bell,
@@ -29,6 +29,7 @@ import {
   SidebarTrigger
 } from '@/components/ui/sidebar';
 import HomeComponent from '@/components/Home';
+import Profile from '@/components/Profile';
 
 export default function DevConnect() {
   const [activeTab, setActiveTab] = useState('home');
@@ -142,28 +143,7 @@ export default function DevConnect() {
           <div className='p-6'>
             {activeTab === 'home' && <HomeComponent />}
 
-            {activeTab === 'profile' && (
-              <Card>
-                <CardHeader>
-                  <div className='flex items-center space-x-4'>
-                    <Avatar className='h-20 w-20'>
-                      <AvatarImage src='https://api.dicebear.com/6.x/initials/svg?seed=JD' />
-                      <AvatarFallback>JD</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h2 className='text-2xl font-bold'>John Doe</h2>
-                      <p className='text-gray-500 dark:text-gray-400'>Full Stack Developer</p>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p>
-                    Passionate about creating efficient and scalable web applications. Always
-                    learning and exploring new technologies.
-                  </p>
-                </CardContent>
-              </Card>
-            )}
+            {activeTab === 'profile' && <Profile />}
 
             {activeTab === 'messages' && (
               <Card>
