@@ -6,14 +6,11 @@ import {
   MessageSquare,
   User,
   Search,
-  ThumbsUp,
-  Send,
   ChevronsUpDown
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import {
   Sidebar,
   SidebarHeader,
@@ -30,6 +27,7 @@ import {
 } from '@/components/ui/sidebar';
 import HomeComponent from '@/components/Home';
 import Profile from '@/components/Profile';
+import Messages from '@/components/Messages';
 
 export default function DevConnect() {
   const [activeTab, setActiveTab] = useState('home');
@@ -39,7 +37,7 @@ export default function DevConnect() {
 
   return (
     <SidebarProvider>
-      <div className='flex h-screen bg-gray-100 dark:bg-gray-900'>
+      <div className='flex h-screen w-screen bg-gray-100 dark:bg-gray-900'>
         <Sidebar>
           <SidebarHeader>
             <SidebarMenu>
@@ -145,43 +143,7 @@ export default function DevConnect() {
 
             {activeTab === 'profile' && <Profile />}
 
-            {activeTab === 'messages' && (
-              <Card>
-                <CardHeader>
-                  <h2 className='text-xl font-semibold'>Messages</h2>
-                </CardHeader>
-                <CardContent>
-                  <div className='space-y-4'>
-                    {['Alice', 'Bob', 'Charlie'].map((name) => (
-                      <div key={name} className='flex items-center justify-between'>
-                        <div className='flex items-center'>
-                          <Avatar className='h-10 w-10'>
-                            <AvatarImage
-                              src={`https://api.dicebear.com/6.x/initials/svg?seed=${name}`}
-                            />
-                            <AvatarFallback>{name[0]}</AvatarFallback>
-                          </Avatar>
-                          <span className='ml-2 font-semibold'>{name}</span>
-                        </div>
-                        <Button size='sm' variant='ghost'>
-                          <MessageSquare className='h-4 w-4' />
-                          <span className='sr-only'>Message</span>
-                        </Button>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <div className='flex w-full items-center space-x-2'>
-                    <Input placeholder='Type a message...' />
-                    <Button size='icon'>
-                      <Send className='h-4 w-4' />
-                      <span className='sr-only'>Send</span>
-                    </Button>
-                  </div>
-                </CardFooter>
-              </Card>
-            )}
+            {activeTab === 'messages' && <Messages />}
           </div>
         </main>
       </div>
